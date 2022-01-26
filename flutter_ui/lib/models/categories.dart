@@ -6,12 +6,16 @@ class Perishable extends Product {
       {required String name,
       required String brand,
       required String image,
+      required String id,
       required double price,
+      required String description,
       required this.expirationDate,
       required String category})
       : super(
             brand: brand,
             name: name,
+            description: description,
+            id: id,
             price: price,
             category: category,
             image: image);
@@ -60,39 +64,39 @@ enum Size { XS, S, M, L, XL }
 
 class Clothes extends Product {
   final String color;
-  final Size size;
+
   Clothes(
       {required String name,
       required String brand,
       required double price,
       required String image,
       required this.color,
-      required this.size,
+      required String description,
+      required String id,
       required String category})
       : super(
             brand: brand,
             name: name,
+            description: description,
             price: price,
+            id: id,
             category: category,
             image: image);
 
   double calculateDiscount(double quantity, purchaseDt, Function addForPrint) {
     final double totalPrice = quantity * price;
     var discount = 0.00;
-    String sizeString = size.name;
+    String sizeString = size;
     DateTime d2;
     (purchaseDt == null)
         ? d2 = DateTime.now()
         : d2 = DateTime.parse(purchaseDt);
-    print('$name $brand $sizeString $color');
     addForPrint('$name $brand $sizeString $color');
-    print(
-        '$quantity x \$$price = \$${double.parse((totalPrice).toStringAsFixed(2))}');
+
     addForPrint(
         '$quantity x \$$price = \$${double.parse((totalPrice).toStringAsFixed(2))}');
     if (!(d2.weekday == 7 || d2.weekday == 6)) {
       discount = price * 0.1 * quantity;
-      print('#discount 10% -\$${double.parse((discount).toStringAsFixed(2))}');
       addForPrint(
           '#discount 10% -\$${double.parse((discount).toStringAsFixed(2))}');
     }
@@ -112,11 +116,15 @@ class Appliance extends Product {
       required String image,
       required this.productionDate,
       required this.weight,
+      required String id,
+      required String description,
       required String category})
       : super(
             brand: brand,
             name: name,
+            description: description,
             price: price,
+            id: id,
             category: category,
             image: image);
 

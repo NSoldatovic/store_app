@@ -3,15 +3,17 @@ import 'package:flutter_svg/svg.dart';
 import 'package:flutter_ui/cart.dart';
 import 'package:flutter_ui/screens/home/cart/receipt.dart';
 
-class cartScreen extends StatefulWidget {
+import '../../../constants.dart';
+
+class CartScreen extends StatefulWidget {
   final CartClass cartObject;
-  const cartScreen({Key? key, required this.cartObject}) : super(key: key);
+  const CartScreen({Key? key, required this.cartObject}) : super(key: key);
 
   @override
-  _cartScreenState createState() => _cartScreenState();
+  _CartScreenState createState() => _CartScreenState();
 }
 
-class _cartScreenState extends State<cartScreen> {
+class _CartScreenState extends State<CartScreen> {
   void deleteTx(int index) {
     setState(() {
       widget.cartObject.cart.removeAt(index);
@@ -22,8 +24,20 @@ class _cartScreenState extends State<cartScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Color(0xFFE6B398),
+          backgroundColor: kColorTheme,
           elevation: 0,
+          title: Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: kDefaultPaddin * 3.9),
+            child: Text(
+              "CART",
+              style: Theme.of(context).textTheme.headline5!.copyWith(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 30,
+                  color: Colors.white,
+                  letterSpacing: 3),
+            ),
+          ),
           leading: IconButton(
             icon: SvgPicture.asset(
               'assets/icons/back.svg',
@@ -46,7 +60,7 @@ class _cartScreenState extends State<cartScreen> {
                 itemBuilder: (ctx, index) {
                   return Card(
                     elevation: 5,
-                    margin: EdgeInsets.symmetric(
+                    margin: const EdgeInsets.symmetric(
                       vertical: 8,
                       horizontal: 5,
                     ),
@@ -55,7 +69,7 @@ class _cartScreenState extends State<cartScreen> {
                         backgroundColor: Colors.transparent,
                         radius: 30,
                         child: Padding(
-                          padding: EdgeInsets.all(6),
+                          padding: const EdgeInsets.all(6),
                           child: FittedBox(
                             child: Image.asset(
                                 widget.cartObject.cart[index]['product'].image),
@@ -69,7 +83,7 @@ class _cartScreenState extends State<cartScreen> {
                       subtitle: Text(
                           '${widget.cartObject.cart[index]['quantity']} x \$${widget.cartObject.cart[index]['product'].price}'),
                       trailing: IconButton(
-                        icon: Icon(Icons.delete),
+                        icon: const Icon(Icons.delete),
                         color: Theme.of(context).errorColor,
                         onPressed: () => deleteTx(index),
                       ),
@@ -88,9 +102,8 @@ class _cartScreenState extends State<cartScreen> {
                       MaterialPageRoute(
                           builder: (context) =>
                               Receipt(cart: widget.cartObject.cart)));
-                  print('radi');
                 },
-                child: Text('Print Receipt'),
+                child: const Text('Print Receipt'),
               ));
   }
 }

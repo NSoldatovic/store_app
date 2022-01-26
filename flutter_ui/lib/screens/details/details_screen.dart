@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flutter_ui/constants.dart';
 import 'package:flutter_ui/models/product.dart';
 import 'package:flutter_ui/screens/details/components/body.dart';
+
+import '../../constants.dart';
 
 class DetailsScreen extends StatelessWidget {
   final Product product;
@@ -14,7 +15,7 @@ class DetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFE6B398),
+      backgroundColor: kColorTheme,
       appBar: buildAppBar(context),
       body: Body(product: product, addToCart: addToCart),
     );
@@ -22,8 +23,14 @@ class DetailsScreen extends StatelessWidget {
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
-      backgroundColor: Color(0xFFE6B398),
-      elevation: 0,
+      title: Text("${product.name}",
+          style: Theme.of(context).textTheme.headline5!.copyWith(
+              fontWeight: FontWeight.bold,
+              fontSize: 32,
+              color: Colors.white,
+              letterSpacing: 2)),
+      backgroundColor: kColorTheme,
+      elevation: 2,
       leading: IconButton(
         icon: SvgPicture.asset(
           'assets/icons/back.svg',

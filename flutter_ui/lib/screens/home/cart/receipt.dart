@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_ui/models/cashier.dart';
 
+import '../../../constants.dart';
+
 class Receipt extends StatelessWidget {
   final List<Map> cart;
   const Receipt({Key? key, required this.cart}) : super(key: key);
@@ -20,7 +22,7 @@ class Receipt extends StatelessWidget {
 
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: const Color(0xFFE6B398),
+          backgroundColor: kColorTheme,
           elevation: 0,
           leading: IconButton(
             icon: SvgPicture.asset(
