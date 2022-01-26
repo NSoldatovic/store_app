@@ -2,15 +2,16 @@ import './product.dart';
 
 class Perishable extends Product {
   final String expirationDate;
-  final String image;
-  Perishable(
-      {required String name,
-      required String brand,
-      required this.image,
-      required double price,
-      required this.expirationDate,
-      required String category})
-      : super(brand: brand, name: name, price: price, category: category);
+  Perishable({
+    required String name,
+    required String brand,
+    required double price,
+    required this.expirationDate,
+  }) : super(
+          brand: brand,
+          name: name,
+          price: price,
+        );
   int _daysBetween(DateTime from, DateTime to) {
     from = DateTime(from.year, from.month, from.day);
     to = DateTime(to.year, to.month, to.day);
@@ -52,17 +53,19 @@ class Perishable extends Product {
 enum Size { XS, S, M, L, XL }
 
 class Clothes extends Product {
-  final String color, image;
+  final String color;
   final Size size;
-  Clothes(
-      {required String name,
-      required String  brand,
-      required double price,
-      required this.image,
-      required this.color,
-      required this.size,
-      required String category})
-      : super(brand: brand, name: name, price: price, category: category);
+  Clothes({
+    required String name,
+    required String brand,
+    required double price,
+    required this.color,
+    required this.size,
+  }) : super(
+          brand: brand,
+          name: name,
+          price: price,
+        );
 
   double calculateDiscount(double quantity, purchaseDt) {
     final double totalPrice = quantity * price;
@@ -85,18 +88,20 @@ class Clothes extends Product {
 }
 
 class Appliance extends Product {
-  final String productionDate, model, image;
+  final String productionDate, model;
   final double weight;
-  Appliance(
-      {required String name,
-      required String brand,
-      required double price,
-      required this.model,
-      required this.image,
-      required this.productionDate,
-      required this.weight,
-      required String category})
-      : super(brand: brand, name: name, price: price, category: category);
+  Appliance({
+    required String name,
+    required String brand,
+    required double price,
+    required this.model,
+    required this.productionDate,
+    required this.weight,
+  }) : super(
+          brand: brand,
+          name: name,
+          price: price,
+        );
 
   double calculateDiscount(double quantity, purchaseDt) {
     final double totalPrice = quantity * price;
