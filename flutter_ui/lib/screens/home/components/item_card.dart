@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui/example_data.dart';
 import 'package:flutter_ui/models/product.dart';
-
+import 'package:flutter_ui/cart.dart';
 import '../../../constants.dart';
 
 class ItemCard extends StatelessWidget {
   final Product product;
   final VoidCallback press;
+
   const ItemCard({
     Key? key,
     required this.product,

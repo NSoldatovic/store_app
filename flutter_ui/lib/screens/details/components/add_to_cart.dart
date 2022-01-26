@@ -36,7 +36,7 @@ class AddToCart extends StatelessWidget {
                 color: Color(0xFFE6B398),
               ),
               onPressed: () {
-                CartCounterState.amount();
+                print("Aaaaaa");
               },
             ),
           ),

@@ -6,14 +6,17 @@ import 'package:flutter_ui/screens/details/components/body.dart';
 
 class DetailsScreen extends StatelessWidget {
   final Product product;
+  final Function addToCart;
 
-  const DetailsScreen({Key? key, required this.product}) : super(key: key);
+  const DetailsScreen(
+      {Key? key, required this.product, required this.addToCart})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFE6B398),
       appBar: buildAppBar(context),
-      body: Body(product: product),
+      body: Body(product: product, addToCart: addToCart),
     );
   }
 
@@ -28,13 +31,15 @@ class DetailsScreen extends StatelessWidget {
         ),
         onPressed: () => Navigator.pop(context),
       ),
-      actions: <Widget>[
+      /* actions: <Widget>[
         IconButton(
           icon: SvgPicture.asset("assets/icons/cart.svg"),
-          onPressed: () {},
+          onPressed: () {
+            print('details Screen');
+          },
         ),
         SizedBox(width: kDefaultPaddin / 2)
-      ],
+      ], */
     );
   }
 }

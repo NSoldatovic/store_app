@@ -2,24 +2,31 @@ import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
 
+// ignore: must_be_immutable
 class CartCounter extends StatefulWidget {
   String category;
+  int numOfItems = 1;
+  final amountController = TextEditingController();
   CartCounter({Key? key, required this.category}) : super(key: key);
   @override
   CartCounterState createState() => CartCounterState();
+  num? amount() {
+    return (category == "food")
+        ? double.tryParse(amountController as String)
+        : numOfItems;
+  }
 }
 
 class CartCounterState extends State<CartCounter> {
-  final amountController = TextEditingController();
   Widget notfood() {
     return Row(
       children: <Widget>[
         buildOutlineButton(
           icon: Icons.remove,
           press: () {
-            if (numOfItems > 1) {
+            if (widget.numOfItems > 1) {
               setState(() {
-                numOfItems--;
+                widget.numOfItems--;
               });
             }
           },
@@ -27,7 +34,7 @@ class CartCounterState extends State<CartCounter> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: kDefaultPaddin / 2),
           child: Text(
-            numOfItems.toString().padLeft(2, "0"),
+            widget.numOfItems.toString().padLeft(2, "0"),
             style: Theme.of(context).textTheme.headline6,
           ),
         ),
@@ -35,7 +42,7 @@ class CartCounterState extends State<CartCounter> {
             icon: Icons.add,
             press: () {
               setState(() {
-                numOfItems++;
+                widget.numOfItems++;
               });
             }),
       ],
@@ -49,7 +56,7 @@ class CartCounterState extends State<CartCounter> {
         Container(
             width: width * 0.25,
             child: TextField(
-                controller: amountController,
+                controller: widget.amountController,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
@@ -69,13 +76,6 @@ class CartCounterState extends State<CartCounter> {
     );
   }
 
-  num? amount() {
-    return (widget.category == "food")
-        ? double.tryParse(amountController as String)
-        : numOfItems;
-  }
-
-  int numOfItems = 1;
   @override
   Widget build(BuildContext context) {
     return (widget.category == "food") ? food() : notfood();

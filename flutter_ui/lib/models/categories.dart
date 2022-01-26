@@ -21,11 +21,11 @@ class Perishable extends Product {
     return (to.difference(from).inHours / 24).round();
   }
 
-  double calculateDiscount(double quantity, purchaseDt) {
+  double calculateDiscount(double quantity, purchaseDt, Function addForPrint) {
     final double totalPrice = quantity * price;
     var discount = 0.00;
-    print('$name $brand ');
-    print(
+    addForPrint('$name $brand ');
+    addForPrint(
         '$quantity x \$$price = \$${double.parse((totalPrice).toStringAsFixed(2))}');
 
     final d1 = DateTime.parse(expirationDate);
@@ -35,18 +35,21 @@ class Perishable extends Product {
         : d2 = DateTime.parse(purchaseDt);
     if (d1.year == d2.year && d1.month == d2.month && d1.day == d2.day) {
       discount = price / 2 * quantity;
-      print('#discount 50% -\$${double.parse((discount).toStringAsFixed(2))}');
+      addForPrint(
+          '#discount 50% -\$${double.parse((discount).toStringAsFixed(2))}');
       return discount;
     }
     final difference = _daysBetween(DateTime.parse(expirationDate), d2);
     if (difference > -5 && difference < 0) {
       discount = price * 0.1 * quantity;
-      print('#discount 10% -\$${double.parse((discount).toStringAsFixed(2))}');
+      addForPrint(
+          '#discount 10% -\$${double.parse((discount).toStringAsFixed(2))}');
     }
     //The expiration date has expired
     if (difference > 0) {
       discount = price * 0.5 * quantity;
-      print('#discount 50% -\$${double.parse((discount).toStringAsFixed(2))}');
+      addForPrint(
+          '#discount 50% -\$${double.parse((discount).toStringAsFixed(2))}');
     }
 
     return discount;
@@ -73,7 +76,7 @@ class Clothes extends Product {
             category: category,
             image: image);
 
-  double calculateDiscount(double quantity, purchaseDt) {
+  double calculateDiscount(double quantity, purchaseDt, Function addForPrint) {
     final double totalPrice = quantity * price;
     var discount = 0.00;
     String sizeString = size.name;
@@ -82,11 +85,16 @@ class Clothes extends Product {
         ? d2 = DateTime.now()
         : d2 = DateTime.parse(purchaseDt);
     print('$name $brand $sizeString $color');
+    addForPrint('$name $brand $sizeString $color');
     print(
+        '$quantity x \$$price = \$${double.parse((totalPrice).toStringAsFixed(2))}');
+    addForPrint(
         '$quantity x \$$price = \$${double.parse((totalPrice).toStringAsFixed(2))}');
     if (!(d2.weekday == 7 || d2.weekday == 6)) {
       discount = price * 0.1 * quantity;
       print('#discount 10% -\$${double.parse((discount).toStringAsFixed(2))}');
+      addForPrint(
+          '#discount 10% -\$${double.parse((discount).toStringAsFixed(2))}');
     }
 
     return discount;
@@ -112,19 +120,20 @@ class Appliance extends Product {
             category: category,
             image: image);
 
-  double calculateDiscount(double quantity, purchaseDt) {
+  double calculateDiscount(double quantity, purchaseDt, Function addForPrint) {
     final double totalPrice = quantity * price;
     var discount = 0.00;
     DateTime d2;
     (purchaseDt == null)
         ? d2 = DateTime.now()
         : d2 = DateTime.parse(purchaseDt);
-    print('$name $brand $model');
-    print(
+    addForPrint('$name $brand $model');
+    addForPrint(
         '$quantity x \$$price = \$${double.parse((totalPrice).toStringAsFixed(2))}');
     if (d2.weekday == 7 || d2.weekday == 6 && price > 999) {
       discount = price * 0.05 * quantity;
-      print('#discount 10% -\$${double.parse((discount).toStringAsFixed(2))}');
+      addForPrint(
+          '#discount 10% -\$${double.parse((discount).toStringAsFixed(2))}');
     }
 
     return discount;

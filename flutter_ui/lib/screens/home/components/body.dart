@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ui/cart.dart';
 import 'package:flutter_ui/constants.dart';
 import 'package:flutter_ui/example_data.dart';
 import 'package:flutter_ui/screens/details/details_screen.dart';
@@ -7,6 +8,8 @@ import 'categorries.dart';
 import 'item_card.dart';
 
 class Body extends StatelessWidget {
+  final Function addToCart;
+  const Body({required this.addToCart});
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -41,6 +44,7 @@ class Body extends StatelessWidget {
                           MaterialPageRoute(
                             builder: (context) => DetailsScreen(
                               product: supply[index],
+                              addToCart: addToCart,
                             ),
                           )),
                     )),
