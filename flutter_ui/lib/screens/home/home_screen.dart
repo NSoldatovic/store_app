@@ -34,7 +34,7 @@ class HomeScreen extends StatelessWidget {
         onPressed: () {},
       ),
       title: Text(
-        "Store name",
+        "Store",
         style: Theme.of(context).textTheme.headline5!.copyWith(
             fontWeight: FontWeight.bold,
             fontSize: 38,

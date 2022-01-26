@@ -32,9 +32,11 @@ class Receipt extends StatelessWidget {
             onPressed: () => Navigator.pop(context),
           ),
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: Text('$forPrint', style: const TextStyle(fontSize: 17)),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Text('$forPrint', style: const TextStyle(fontSize: 17)),
+          ),
         ));
   }
 }

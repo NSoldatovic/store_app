@@ -9,9 +9,6 @@ class CartClass {
     for (i = 0; i < cart.length; i++) {
       if (element['product'] == cart[i]['product'] &&
           element['product'].size == cart[i]['product'].size) {
-        print('U korpi');
-        print(element['product'].size);
-        print(cart[i]['product'].size);
         bool = false;
         break;
       }
