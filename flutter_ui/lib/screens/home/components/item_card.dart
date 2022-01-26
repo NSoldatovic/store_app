@@ -31,7 +31,7 @@ class ItemCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Container(
-              height: size.height * 0.185,
+              height: size.height * 0.154,
               alignment: Alignment.center,
               child: Hero(
                 tag: product.id,

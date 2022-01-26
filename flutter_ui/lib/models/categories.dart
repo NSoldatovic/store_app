@@ -64,6 +64,7 @@ enum Size { XS, S, M, L, XL }
 
 class Clothes extends Product {
   final String color;
+  final String sizeS;
 
   Clothes(
       {required String name,
@@ -73,7 +74,8 @@ class Clothes extends Product {
       required this.color,
       required String description,
       required String id,
-      required String category})
+      required String category,
+      required this.sizeS})
       : super(
             brand: brand,
             name: name,
@@ -81,7 +83,9 @@ class Clothes extends Product {
             price: price,
             id: id,
             category: category,
-            image: image);
+            image: image) {
+    size = sizeS;
+  }
 
   double calculateDiscount(double quantity, purchaseDt, Function addForPrint) {
     final double totalPrice = quantity * price;

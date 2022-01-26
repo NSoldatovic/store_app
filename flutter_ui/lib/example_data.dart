@@ -46,20 +46,22 @@ final supply = [
     brand: 'BrandT',
     id: '005',
     category: 'clothes',
-    image: "assets/images/t-shirt.png", description: dummyText,
+    image: "assets/images/t-shirt.png",
+    description: dummyText,
     price: 15.99,
     color: 'violet',
-    //size: Size.M
+    sizeS: '',
   ),
   Clothes(
     name: 'Hoddie',
     brand: 'BrandT',
     id: '006',
     category: 'clothes',
-    image: "assets/images/hoodie.png", description: dummyText,
+    image: "assets/images/hoodie.png",
+    description: dummyText,
     price: 19.99,
     color: 'violet',
-    //size: Size.M
+    sizeS: '',
   ),
   Appliance(
       name: 'Laptop',

@@ -127,10 +127,10 @@ class _BodyState extends State<Body> {
             value: dropdownValue,
             icon: const Icon(Icons.arrow_drop_down),
             elevation: 16,
-            style: const TextStyle(color: Colors.deepPurple),
+            style: const TextStyle(color: Colors.black87),
             underline: Container(
               height: 2,
-              color: Colors.deepPurpleAccent,
+              color: Colors.black87,
             ),
             onChanged: (String? newValue) {
               setState(() {
@@ -153,7 +153,7 @@ class _BodyState extends State<Body> {
       child: Column(
         children: <Widget>[
           SizedBox(
-            height: size.height * 0.86,
+            height: size.height * 0.88,
             child: Stack(
               children: <Widget>[
                 Container(
@@ -168,7 +168,7 @@ class _BodyState extends State<Body> {
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(24),
-                      topRight: const Radius.circular(24),
+                      topRight: Radius.circular(24),
                     ),
                   ),
                   child: Column(
@@ -188,7 +188,7 @@ class _BodyState extends State<Body> {
                             height: 50,
                             width: 50,
                             decoration: const BoxDecoration(
-                              color: const Color(0xFFFF6464),
+                              color: Color(0xFFFF6464),
                               shape: BoxShape.circle,
                             ),
                             child: SvgPicture.asset("assets/icons/heart.svg"),
@@ -222,16 +222,15 @@ class _BodyState extends State<Body> {
                                   (product.category == 'clothes')
                                       ? product.size = dropdownValue
                                       : null;
-                                  //print('radi');
+
                                   widget.addToCart({
                                     'product': product,
                                     'quantity': amount()
                                   });
                                   ScaffoldMessenger.of(context)
                                       .showSnackBar(const SnackBar(
-                                    content: const Text('Added to cart!'),
-                                    duration:
-                                        const Duration(milliseconds: 1500),
+                                    content: Text('Added to cart!'),
+                                    duration: Duration(milliseconds: 1500),
                                   ));
 
                                   //print(amount());

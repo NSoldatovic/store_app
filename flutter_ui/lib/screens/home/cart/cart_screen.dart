@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flutter_ui/cart.dart';
+import 'package:flutter_ui/models/cart.dart';
 import 'package:flutter_ui/screens/home/cart/receipt.dart';
 
 import '../../../constants.dart';
@@ -81,7 +81,7 @@ class _CartScreenState extends State<CartScreen> {
                         // style: Theme.of(context).textTheme.title,
                       ),
                       subtitle: Text(
-                          '${widget.cartObject.cart[index]['quantity']} x \$${widget.cartObject.cart[index]['product'].price}'),
+                          '${widget.cartObject.cart[index]['quantity']} x \$${widget.cartObject.cart[index]['product'].price}    ${widget.cartObject.cart[index]['product'].size}'),
                       trailing: IconButton(
                         icon: const Icon(Icons.delete),
                         color: Theme.of(context).errorColor,

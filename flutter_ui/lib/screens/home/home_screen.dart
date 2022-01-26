@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:flutter_ui/constants.dart';
 
 import 'package:flutter_ui/screens/home/components/body.dart';
-import 'package:flutter_ui/cart.dart';
+import 'package:flutter_ui/models/cart.dart';
 
 import 'cart/cart_screen.dart';
 
