@@ -1,4 +1,4 @@
-class Product {
+abstract class Product {
   final String name, brand, category, image, id, description;
   double price;
   String size = '';

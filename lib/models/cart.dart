@@ -7,7 +7,7 @@ class CartClass {
     var bool = true;
     int i;
     for (i = 0; i < cart.length; i++) {
-      if (element['product'] == cart[i]['product'] &&
+      if (element['product'].id == cart[i]['product'].id &&
           element['product'].size == cart[i]['product'].size) {
         bool = false;
         break;

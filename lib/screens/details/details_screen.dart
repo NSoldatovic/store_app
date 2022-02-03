@@ -23,7 +23,7 @@ class DetailsScreen extends StatelessWidget {
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
-      title: Text("${product.name}",
+      title: Text(product.name,
           style: Theme.of(context).textTheme.headline5!.copyWith(
               fontWeight: FontWeight.bold,
               fontSize: 32,

@@ -16,7 +16,7 @@ class Receipt extends StatelessWidget {
     //You have a option to choose purchase date and time if you want or
     //choose null if you want date and time to be now
     //const specifiedPurchaseDatetime = '2021-06-14 12:34:56';
-    final specifiedPurchaseDatetime = null;
+    const specifiedPurchaseDatetime = null;
 
     forPrint = dragan.printReceipt(cart, specifiedPurchaseDatetime);
 

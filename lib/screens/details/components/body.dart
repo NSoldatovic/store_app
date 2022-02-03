@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_ui/constants.dart';
 import 'package:flutter_ui/models/product.dart';
+import 'package:flutter_ui/screens/home/cart/receipt.dart';
 
 import 'description.dart';
 import 'product_title_with_image.dart';
@@ -244,9 +245,20 @@ class _BodyState extends State<Body> {
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(18)),
                                   color: kColorTheme,
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                Receipt(cart: [
+                                                  {
+                                                    'product': product,
+                                                    'quantity': amount()
+                                                  }
+                                                ])));
+                                  },
                                   child: Text(
-                                    "Buy  Now".toUpperCase(),
+                                    "Buy Now".toUpperCase(),
                                     style: const TextStyle(
                                       fontSize: 17,
                                       fontWeight: FontWeight.bold,
